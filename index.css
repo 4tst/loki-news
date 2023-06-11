@@ -1,0 +1,11 @@
+.animate__height {
+  transition-property: height;
+  transition-duration: 1s;
+  animation-name: fadeInUp;
+}
+
+.animate__width {
+  transition-property: width;
+  transition-duration: 1s;
+  animation-name: fadeInUp;
+}

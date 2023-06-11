@@ -13,34 +13,40 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link rel="stylesheet" href="./index.css" />
     <script>
+      const effects = [
+        "animate__bounce",
+        "animate__rubberBand",
+        "animate__wobble",
+        "animate__wobble",
+        "animate__backInDown",
+        "animate__bounceInLeft",
+        "animate__bounceInUp",
+        "animate__fadeInDownBig",
+        "animate__fadeInLeftBig",
+        "animate__fadeInTopLeft",
+        "animate__flip",
+        "animate__lightSpeedInRight",
+        "animate__rotateIn",
+        "animate__rollIn",
+        "animate__zoomInDown",
+        "animate__width",
+        "animate__height",
+      ];
       const getRandomEffect = () => {
-        let tmps = [
-          "animate__bounce",
-          "animate__rubberBand",
-          "animate__wobble",
-          "animate__wobble",
-          "animate__backInDown",
-          "animate__bounceInLeft",
-          "animate__bounceInUp",
-          "animate__fadeInDownBig",
-          "animate__fadeInLeftBig",
-          "animate__fadeInTopLeft",
-          "animate__flip",
-          "animate__lightSpeedInRight",
-          "animate__rotateIn",
-          "animate__rollIn",
-          "animate__zoomInDown",
-        ];
-        return tmps.at(Math.floor(Math.random() * tmps.length));
+        return effects.at(Math.floor(Math.random() * effects.length));
       };
       let x = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
             if (e.intersectionRatio <= 0) return;
             console.log(e);
-            e.target.classList.add("animate__animated", getRandomEffect());
-            // x.unobserve(e.target);
+            e.target.classList.add(
+              "animate__animated",
+              e.target.getAttribute("effect-id") || "animate__fadeIn"
+            );
+            x.unobserve(e.target);
           });
         },
         {
@@ -50,6 +56,10 @@
       window.onload = function () {
         document.querySelectorAll("img").forEach((e) => {
           x.observe(e);
+          e.onmouseenter = () => {
+            e.classList.remove(...effects);
+            e.classList.add(e.getAttribute("effect-id") || "animate__fadeIn");
+          };
         });
       };
       window.onunload = function () {
@@ -9626,6 +9636,7 @@
                                             data-has-ssr-src=""
                                             data-src="https://static.wixstatic.com/media/59f5e5_bc0a4798065848e6aa22e8f1ecf63c4d~mv2.png/v1/fill/w_496,h_342,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/%E5%B7%A6%E4%B8%8A.png"
                                             ><img
+                                              effect-id="animate__fadeInLeft"
                                               src="./index_files/左上.png"
                                               alt="左上.png"
                                               style="
@@ -9658,6 +9669,7 @@
                                             data-has-ssr-src=""
                                             data-src="https://static.wixstatic.com/media/59f5e5_1105a0bdda354b528c4245f6cefcd347~mv2.png/v1/fill/w_472,h_294,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/%E5%8F%B3%E4%B8%8A.png"
                                             ><img
+                                              effect-id="animate__fadeInRight"
                                               src="./index_files/右上.png"
                                               alt="右上.png"
                                               style="
@@ -9690,6 +9702,7 @@
                                             data-has-ssr-src=""
                                             data-src="https://static.wixstatic.com/media/59f5e5_1526f5bd5dac40b5ad0f207e590ddf43~mv2.png/v1/fill/w_1602,h_326,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/%E4%B8%8B.png"
                                             ><img
+                                              effect-id="animate__fadeInUp"
                                               src="./index_files/下.png"
                                               alt="下.png"
                                               style="
@@ -10107,6 +10120,7 @@
                                                 data-has-ssr-src=""
                                                 data-src="https://static.wixstatic.com/media/59f5e5_9e5e1951f1f84338a135a186d577c5aa~mv2.png/v1/fill/w_2000,h_1276,al_c,q_95,usm_0.66_1.00_0.01,enc_auto/%E6%95%B4.png"
                                                 ><img
+                                                  effect-id="ipa-100"
                                                   src="./index_files/整.png"
                                                   alt="整.png"
                                                   style="
@@ -10310,6 +10324,7 @@
                                                 data-has-ssr-src=""
                                                 data-src="https://static.wixstatic.com/media/59f5e5_b3858a57f0104b9fab8a12b3ae7076c8~mv2.png/v1/fill/w_916,h_580,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/%E5%BA%95%E5%AD%90.png"
                                                 ><img
+                                                  effect-id="animate__width"
                                                   src="./index_files/底子.png"
                                                   alt="底子.png"
                                                   style="
@@ -10317,6 +10332,7 @@
                                                     height: 290px;
                                                     object-fit: cover;
                                                     object-position: 50% 50%;
+                                                    animation-delay: 1.6s;
                                                   "
                                                   fetchpriority="high"
                                               /></wow-image>
@@ -10343,6 +10359,7 @@
                                                 data-has-ssr-src=""
                                                 data-src="https://static.wixstatic.com/media/59f5e5_0155f9b54fd347b786cd5fcac75be299~mv2.png/v1/fill/w_198,h_198,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/%E5%B7%A6%E4%B8%80.png"
                                                 ><img
+                                                  effect-id="animate__width"
                                                   src="./index_files/左一.png"
                                                   alt="左一.png"
                                                   style="
@@ -10350,6 +10367,7 @@
                                                     height: 99px;
                                                     object-fit: cover;
                                                     object-position: 50% 50%;
+                                                    animation-delay: 0.4s;
                                                   "
                                                   fetchpriority="high"
                                               /></wow-image>
@@ -10376,6 +10394,7 @@
                                                 data-has-ssr-src=""
                                                 data-src="https://static.wixstatic.com/media/59f5e5_cb93f0c452d54f8eb2262a54502f5b9a~mv2.png/v1/fill/w_198,h_198,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/%E5%B7%A6%E4%BA%8C.png"
                                                 ><img
+                                                  effect-id="animate__width"
                                                   src="./index_files/左二.png"
                                                   alt="左二.png"
                                                   style="
@@ -10383,6 +10402,7 @@
                                                     height: 99px;
                                                     object-fit: cover;
                                                     object-position: 50% 50%;
+                                                    animation-delay: 0.8s;
                                                   "
                                                   fetchpriority="high"
                                               /></wow-image>
@@ -10409,6 +10429,7 @@
                                                 data-has-ssr-src=""
                                                 data-src="https://static.wixstatic.com/media/59f5e5_cc2980c22afb48e19358d2e066a935bc~mv2.png/v1/fill/w_198,h_198,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/%E5%B7%A6%E5%9B%9B.png"
                                                 ><img
+                                                  effect-id="animate__width"
                                                   src="./index_files/左四.png"
                                                   alt="左四.png"
                                                   style="
@@ -10416,6 +10437,7 @@
                                                     height: 99px;
                                                     object-fit: cover;
                                                     object-position: 50% 50%;
+                                                    animation-delay: 1.6s;
                                                   "
                                                   fetchpriority="high"
                                               /></wow-image>
@@ -10442,6 +10464,7 @@
                                                 data-has-ssr-src=""
                                                 data-src="https://static.wixstatic.com/media/59f5e5_9a0830072bfc49258f88fbd88f3f2dbe~mv2.png/v1/fill/w_198,h_198,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/%E5%B7%A6%E4%B8%89.png"
                                                 ><img
+                                                  effect-id="animate__width"
                                                   src="./index_files/左三.png"
                                                   alt="左三.png"
                                                   style="
@@ -10449,6 +10472,7 @@
                                                     height: 99px;
                                                     object-fit: cover;
                                                     object-position: 50% 50%;
+                                                    animation-delay: 1.2s;
                                                   "
                                                   fetchpriority="high"
                                               /></wow-image>
@@ -10475,6 +10499,7 @@
                                                 data-has-ssr-src=""
                                                 data-src="https://static.wixstatic.com/media/59f5e5_c5539cbeb5c9466bbfd90fc240178885~mv2.png/v1/fill/w_198,h_198,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/%E5%B7%A6%E4%BA%94.png"
                                                 ><img
+                                                  effect-id="animate__width"
                                                   src="./index_files/左五.png"
                                                   alt="左五.png"
                                                   style="
@@ -10482,6 +10507,7 @@
                                                     height: 99px;
                                                     object-fit: cover;
                                                     object-position: 50% 50%;
+                                                    animation-delay: 2s;
                                                   "
                                                   fetchpriority="high"
                                               /></wow-image>
@@ -10491,7 +10517,10 @@
                                             id="comp-liolopk7"
                                             class="KcpHeO tz5f0K comp-liolopk7 wixui-rich-text"
                                             data-testid="richTextElement"
-                                            style="visibility: inherit"
+                                            style="
+                                              visibility: inherit;
+                                              animation-delay: 2s;
+                                            "
                                             data-angle="0"
                                             data-angle-style-location="style"
                                             data-screen-in-hide="done"
@@ -10544,6 +10573,7 @@
                                                 data-has-ssr-src=""
                                                 data-src="https://static.wixstatic.com/media/59f5e5_e1fe2129d12645f4ba45f76d4e3fcfca~mv2.png/v1/fill/w_1036,h_580,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/%E5%8F%88%E4%B8%80%E4%B8%AA.png"
                                                 ><img
+                                                  effect-id="animate__fadeIn"
                                                   src="./index_files/又一个.png"
                                                   alt="又一个.png"
                                                   style="
@@ -10551,6 +10581,7 @@
                                                     height: 290px;
                                                     object-fit: cover;
                                                     object-position: 50% 50%;
+                                                    animation-delay: 3s;
                                                   "
                                                   fetchpriority="high"
                                               /></wow-image>
@@ -10578,6 +10609,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_3c9e027f3b134427a32c543a44f73a6f~mv2.png/v1/fill/w_88,h_568,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/1.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/1.png"
                                         alt="1.png"
                                         style="
@@ -10585,6 +10617,7 @@
                                           height: 284px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 0.4s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10607,6 +10640,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_19ee7190d9aa45db9b5ab05a1bbef45a~mv2.png/v1/fill/w_108,h_518,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/2.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/2.png"
                                         alt="2.png"
                                         style="
@@ -10614,6 +10648,7 @@
                                           height: 259px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 0.8s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10636,6 +10671,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_40d3474315cc4d5284a305e96f572f55~mv2.png/v1/fill/w_98,h_420,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/3.png"
                                         alt="3.png"
                                         style="
@@ -10643,6 +10679,7 @@
                                           height: 210px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 1.2s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10665,6 +10702,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_08459e61138041fdb5e122cada632be1~mv2.png/v1/fill/w_106,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/4.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/4.png"
                                         alt="4.png"
                                         style="
@@ -10672,6 +10710,7 @@
                                           height: 225px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 1.6s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10694,6 +10733,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_137122f3647943a095e06405a5be3cc6~mv2.png/v1/fill/w_132,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/5.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/5.png"
                                         alt="5.png"
                                         style="
@@ -10701,6 +10741,7 @@
                                           height: 225px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 2s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10723,6 +10764,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_b18ce7271c19453b9eb54141116d7106~mv2.png/v1/fill/w_126,h_388,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/6.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/6.png"
                                         alt="6.png"
                                         style="
@@ -10730,6 +10772,7 @@
                                           height: 194px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 2.4s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10752,6 +10795,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_3e75bcb4c8a64c4bbc3a73b358af5112~mv2.png/v1/fill/w_116,h_352,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/7.png"
                                         alt="7.png"
                                         style="
@@ -10759,6 +10803,7 @@
                                           height: 176px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 2.8s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10781,6 +10826,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_35f47085b3c34e85b4767910143a6396~mv2.png/v1/fill/w_118,h_352,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/8.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/8.png"
                                         alt="8.png"
                                         style="
@@ -10788,6 +10834,7 @@
                                           height: 176px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 3.2s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10810,6 +10857,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_528f999019214e38be3159811c7e7fec~mv2.png/v1/fill/w_122,h_336,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/9.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/9.png"
                                         alt="9.png"
                                         style="
@@ -10817,6 +10865,7 @@
                                           height: 168px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 3.6s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10839,6 +10888,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_585a7cd534dd4c0782d5b64ee4d5d40e~mv2.png/v1/fill/w_134,h_388,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/10.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/10.png"
                                         alt="10.png"
                                         style="
@@ -10846,6 +10896,7 @@
                                           height: 194px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 4s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10868,6 +10919,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_000f5827fc154eb3b6c38fe4732d9c73~mv2.png/v1/fill/w_142,h_388,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/11.png"
                                         alt="11.png"
                                         style="
@@ -10875,6 +10927,7 @@
                                           height: 194px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 4.4s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10897,6 +10950,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_a1112cce0f1e48ffa90d8760ffc76eab~mv2.png/v1/fill/w_134,h_388,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/12.png"
                                       ><img
+                                        effect-id="animate__height"
                                         src="./index_files/12.png"
                                         alt="12.png"
                                         style="
@@ -10904,6 +10958,7 @@
                                           height: 194px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 4.8s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -10926,6 +10981,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_e83027c7613f49cdb68525496cfc75c1~mv2.png/v1/fill/w_1884,h_50,al_c,lg_1,q_85,enc_auto/%E6%A8%AA%E8%BD%B4.png"
                                       ><img
+                                        effect-id="animate__width"
                                         src="./index_files/横轴.png"
                                         alt="横轴.png"
                                         style="
@@ -10933,6 +10989,7 @@
                                           height: 25px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 5.2s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11160,6 +11217,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_bef579cd742c464598215a955932a803~mv2.png/v1/fill/w_348,h_368,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/%E5%8F%B3%E4%B8%8A.png"
                                       ><img
+                                        effect-id="animate__rotateIn"
                                         src="./index_files/右上(1).png"
                                         alt="66666"
                                         style="
@@ -11254,6 +11312,7 @@
                                           height: 135px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 0.5s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11283,6 +11342,7 @@
                                           height: 184px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 1s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11334,6 +11394,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_1b94590e40d944e19270472cd7c82e6a~mv2.png/v1/fill/w_458,h_438,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/%E4%B8%AD.png"
                                       ><img
+                                        effect-id="animate__rotateIn"
                                         src="./index_files/中.png"
                                         alt="中.png"
                                         style="
@@ -11399,6 +11460,7 @@
                                           height: 166px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 0.5s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11428,6 +11490,7 @@
                                           height: 135px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 1s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11486,6 +11549,7 @@
                                           height: 194px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
+                                          animation-delay: 1s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11855,6 +11919,7 @@
                                             data-has-ssr-src=""
                                             data-src="https://static.wixstatic.com/media/59f5e5_e323ebf6e49e4d43928d8d010c3abb01~mv2.png/v1/fill/w_1268,h_572,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/%E6%9D%A11.png"
                                             ><img
+                                              effect-id="animate__height"
                                               src="./index_files/条1.png"
                                               alt="条1.png"
                                               style="
@@ -11894,6 +11959,7 @@
                                                 height: 60px;
                                                 object-fit: cover;
                                                 object-position: 50% 50%;
+                                                animation-delay: 1s;
                                               "
                                               fetchpriority="high"
                                           /></wow-image>
@@ -11951,6 +12017,7 @@
                                             data-has-ssr-src=""
                                             data-src="https://static.wixstatic.com/media/59f5e5_f9bfc63c077f4c769d8fdb87cff940f0~mv2.png/v1/fill/w_394,h_572,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/%E5%8F%B32.png"
                                             ><img
+                                              effect-id="animate__height"
                                               src="./index_files/右2.png"
                                               alt="右2.png"
                                               style="
@@ -11990,6 +12057,7 @@
                                                 height: 144px;
                                                 object-fit: cover;
                                                 object-position: 50% 50%;
+                                                animation-delay: 1s;
                                               "
                                               fetchpriority="high"
                                           /></wow-image>
@@ -12136,6 +12204,7 @@
                                       data-has-ssr-src=""
                                       data-src="https://static.wixstatic.com/media/59f5e5_5b4ae06e1ddc43788d3ad341a4b878a0~mv2.png/v1/fill/w_1811,h_1047,al_c,q_90,enc_auto/%E6%95%B4.png"
                                       ><img
+                                        effect-id="animate__fadeInUp"
                                         src="./index_files/整(1).png"
                                         alt="整.png"
                                         style="
