@@ -14,7 +14,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <link rel="stylesheet" href="./index.css" />
-    <script>
+    <script async>
       const effects = [
         "animate__bounce",
         "animate__rubberBand",
@@ -59,7 +59,7 @@
           threshold: [0, 0.25, 0.5, 0.75, 1],
         }
       );
-      window.onload = function () {
+      window.addEventListener("DOMContentLoaded", () => {
         getElementsObserved().forEach((e) => {
           x.observe(e);
           // e.onmouseenter = () => {
@@ -67,7 +67,8 @@
           //   e.classList.add(e.getAttribute("effect-id") || "animate__fadeIn");
           // };
         });
-      };
+      });
+      window.onload = function () {};
       window.onunload = function () {
         getElementsObserved().forEach((e) => {
           x.unobserve(e);
