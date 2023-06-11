@@ -37,6 +37,12 @@
       const getRandomEffect = () => {
         return effects.at(Math.floor(Math.random() * effects.length));
       };
+
+      const getElementsObserved = () => {
+        return Array.from(document.querySelectorAll("[effect-id]")).concat(
+          ...document.querySelectorAll("img")
+        );
+      };
       let x = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
@@ -54,16 +60,16 @@
         }
       );
       window.onload = function () {
-        document.querySelectorAll("img").forEach((e) => {
+        getElementsObserved().forEach((e) => {
           x.observe(e);
-          e.onmouseenter = () => {
-            e.classList.remove(...effects);
-            e.classList.add(e.getAttribute("effect-id") || "animate__fadeIn");
-          };
+          // e.onmouseenter = () => {
+          //   e.classList.remove(...effects);
+          //   e.classList.add(e.getAttribute("effect-id") || "animate__fadeIn");
+          // };
         });
       };
       window.onunload = function () {
-        document.querySelectorAll("img").forEach((e) => {
+        getElementsObserved().forEach((e) => {
           x.unobserve(e);
         });
       };
@@ -9290,6 +9296,7 @@
                                                       data-screen-in-hide="done"
                                                     >
                                                       <div
+                                                        effect-id="animate__fadeIn"
                                                         class="nTiihL wixui-box"
                                                         data-testid="container-bg"
                                                       ></div>
@@ -9454,6 +9461,7 @@
                                   data-screen-in-hide="done"
                                 >
                                   <div
+                                    effect-id="animate__fadeIn"
                                     class="nTiihL wixui-box"
                                     data-testid="container-bg"
                                   ></div>
@@ -9604,6 +9612,7 @@
                                   data-screen-in-hide="done"
                                 >
                                   <div
+                                    effect-id="animate__fadeIn"
                                     class="xPEAfP wixui-box"
                                     data-testid="container-bg"
                                   ></div>
@@ -10120,7 +10129,7 @@
                                                 data-has-ssr-src=""
                                                 data-src="https://static.wixstatic.com/media/59f5e5_9e5e1951f1f84338a135a186d577c5aa~mv2.png/v1/fill/w_2000,h_1276,al_c,q_95,usm_0.66_1.00_0.01,enc_auto/%E6%95%B4.png"
                                                 ><img
-                                                  effect-id="ipa-100"
+                                                  effect-id="animate__slideInUp"
                                                   src="./index_files/整.png"
                                                   alt="整.png"
                                                   style="
@@ -11312,7 +11321,7 @@
                                           height: 135px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
-                                          animation-delay: 0.5s;
+                                          animation-delay: 1s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11342,7 +11351,7 @@
                                           height: 184px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
-                                          animation-delay: 1s;
+                                          animation-delay: 1.8s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11460,7 +11469,7 @@
                                           height: 166px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
-                                          animation-delay: 0.5s;
+                                          animation-delay: 1s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11490,7 +11499,7 @@
                                           height: 135px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
-                                          animation-delay: 1s;
+                                          animation-delay: 1.8s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11549,7 +11558,7 @@
                                           height: 194px;
                                           object-fit: cover;
                                           object-position: 50% 50%;
-                                          animation-delay: 1s;
+                                          animation-delay: 1.8s;
                                         "
                                         fetchpriority="high"
                                     /></wow-image>
@@ -11687,6 +11696,7 @@
                                   data-screen-in-hide="done"
                                 >
                                   <div
+                                    effect-id="animate__fadeIn"
                                     class="nTiihL wixui-box"
                                     data-testid="container-bg"
                                   ></div>
@@ -11855,6 +11865,7 @@
                                   data-screen-in-hide="done"
                                 >
                                   <div
+                                    effect-id="animate__fadeIn"
                                     class="xPEAfP wixui-box"
                                     data-testid="container-bg"
                                   ></div>
@@ -11927,6 +11938,7 @@
                                                 height: 286px;
                                                 object-fit: cover;
                                                 object-position: 50% 50%;
+                                                animation-delay: 0.5s;
                                               "
                                               fetchpriority="high"
                                           /></wow-image>
@@ -12025,6 +12037,7 @@
                                                 height: 286px;
                                                 object-fit: cover;
                                                 object-position: 50% 50%;
+                                                animation-delay: 0.5s;
                                               "
                                               fetchpriority="high"
                                           /></wow-image>
